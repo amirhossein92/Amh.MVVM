@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Amh.MVVM.Utility;
 using Amh.MVVM.Base.Command;
+using System.Windows.Interop;
+using Amh.MVVM.UiDemo.Model;
 
 namespace Amh.MVVM.UiDemo.ViewModel
 {
@@ -17,6 +19,13 @@ namespace Amh.MVVM.UiDemo.ViewModel
             AddCommand = new RelayCommand(OnAdd);
             ShowCommand = new RelayCommand(OnShow);
             DetailCommand = new RelayCommand<Weather>(OnDetail);
+
+            MessagingService<AlertModel>.Subscribe(OnMsgSent);
+        }
+
+        private void OnMsgSent(AlertModel obj)
+        {
+            var a = 2;
         }
 
         public override async void LoadData()

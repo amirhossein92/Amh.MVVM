@@ -10,9 +10,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Window.Resources>
-        <!--<StaticResource x:Key="BooleanToVisibilityConverter">
-            <converters:BooleanToVisibilityConverter/>
-        </StaticResource>-->
+        <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
     </Window.Resources>
     <Window.DataContext>
         <local:MainWindowViewModel/>
@@ -23,8 +21,9 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Border Background="LightGray" Height="50" Visibility="{Binding Path=IsAlert}">
-            <Label Content="{Binding Path=AlertMessage}"/>
+        <Border Background="LightGray" Height="50"
+                Visibility="{Binding Path=IsAlert, Mode=TwoWay, Converter={StaticResource BooleanToVisibilityConverter}}">
+            <Label Content="{Binding Path=AlertMessage,Mode=TwoWay}"/>
         </Border>
         <Button Content="BACK" Command="{Binding Path=BackCommand}" Grid.Row="1"/>
         <ContentControl Content="{Binding Path=CurrentUserViewModel}" Grid.Row="2"/>

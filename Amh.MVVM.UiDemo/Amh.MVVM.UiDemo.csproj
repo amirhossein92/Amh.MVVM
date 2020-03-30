@@ -69,6 +69,7 @@
     <Compile Include="Controls\Panels\MyWrapPanel.cs" />
     <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
     <Compile Include="MainWindowViewModel.cs" />
+    <Compile Include="Model\AlertModel.cs" />
     <Compile Include="MyViewLocator.cs" />
     <Compile Include="ViewModel\SampleAddUserControlViewModel.cs" />
     <Compile Include="ViewModel\SampleDetailUserControlViewModel.cs" />

@@ -1,5 +1,6 @@
 ﻿using Amh.MVVM.Base.Command;
 using Amh.MVVM.Base.ViewModel;
+using Amh.MVVM.UiDemo.Model;
 using Amh.MVVM.UiDemo.ViewModel;
 using Amh.MVVM.Utility;
 using System;
@@ -17,6 +18,13 @@ namespace Amh.MVVM.UiDemo
             WindowService.SetMainWindowViewModel(this);
             CurrentUserViewModel = new SampleListUserControlViewModel();
             BackCommand = new RelayCommand(OnBack);
+            MessagingService<AlertModel>.Subscribe(OnMsgSent);
+        }
+
+        private void OnMsgSent(AlertModel msg)
+        {
+            AlertMessage = msg.Message;
+            IsAlert = true;
         }
 
         public RelayCommand BackCommand { get; set; }

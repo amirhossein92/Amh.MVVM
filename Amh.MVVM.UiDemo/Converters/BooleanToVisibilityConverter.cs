@@ -13,10 +13,10 @@ namespace Amh.MVVM.UiDemo.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value is bool result)
+            if (value is bool result && result)
                 return Visibility.Visible;
 
-            return Visibility.Hidden;
+            return Visibility.Collapsed;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

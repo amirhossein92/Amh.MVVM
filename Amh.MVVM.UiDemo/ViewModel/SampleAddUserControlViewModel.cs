@@ -1,5 +1,6 @@
 ﻿using Amh.MVVM.Base.Command;
 using Amh.MVVM.Base.ViewModel;
+using Amh.MVVM.UiDemo.Model;
 using Amh.MVVM.Utility;
 using System;
 using System.Collections.Generic;
@@ -26,6 +27,7 @@ namespace Amh.MVVM.UiDemo.ViewModel
         private void OnSave()
         {
             WindowService.CloseDialogPage(this);
+            MessagingService<AlertModel>.Sent(new AlertModel { Message = "Saved" });
         }
 
         private void OnClose()
