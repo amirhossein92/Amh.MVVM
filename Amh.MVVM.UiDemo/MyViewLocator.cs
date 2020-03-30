@@ -14,7 +14,7 @@ namespace Amh.MVVM.UiDemo
 {
     public static class MyViewLocator
     {
-        public static IEnumerable<(object Key, object Value)> GetDataTemplates()
+        private static IEnumerable<(object Key, object Value)> GetDataTemplates()
         {
             var results = new List<(object Key, object Value)>();
 
@@ -23,6 +23,18 @@ namespace Amh.MVVM.UiDemo
             results.Add(MyViewLocatorUtility.BindViewModelToView<SampleListUserControlViewModel, SampleListUserControlView>());
 
             return results;
+        }
+
+        private static IEnumerable<(object Key, object Value)> _dataTemplates;
+        public static IEnumerable<(object Key, object Value)> DataTemplates
+        {
+            get
+            {
+                if (_dataTemplates == null)
+                    _dataTemplates = GetDataTemplates();
+
+                return _dataTemplates;
+            }
         }
     }
 }

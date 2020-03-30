@@ -10,6 +10,14 @@ namespace Amh.MVVM.Base.ViewModel
 {
     public abstract class ViewModelBase : INotifyPropertyChanged
     {
+        public ViewModelBase()
+        {
+            Title = SetTitle();
+            LoadCommands();
+        }
+
+        public abstract string SetTitle();
+        public abstract void LoadCommands();
         public abstract void LoadData();
 
         private string _title;

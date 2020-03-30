@@ -26,7 +26,7 @@ namespace Amh.MVVM.UiDemo
     {
         public MainWindow()
         {
-            var resources = MyViewLocator.GetDataTemplates();
+            var resources = MyViewLocator.DataTemplates;
             foreach (var resource in resources)
                 this.Resources.Add(resource.Key, resource.Value);
             InitializeComponent();

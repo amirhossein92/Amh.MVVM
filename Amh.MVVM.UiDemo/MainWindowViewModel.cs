@@ -17,7 +17,6 @@ namespace Amh.MVVM.UiDemo
         {
             WindowService.SetMainWindowViewModel(this);
             CurrentUserViewModel = new SampleListUserControlViewModel();
-            BackCommand = new RelayCommand(OnBack);
             MessagingService<AlertModel>.Subscribe(OnMsgSent);
         }
 
@@ -25,6 +24,11 @@ namespace Amh.MVVM.UiDemo
         {
             AlertMessage = msg.Message;
             IsAlert = true;
+        }
+
+        public override void LoadCommands()
+        {
+            BackCommand = new RelayCommand(OnBack);
         }
 
         public RelayCommand BackCommand { get; set; }
@@ -37,6 +41,11 @@ namespace Amh.MVVM.UiDemo
 
         public override void LoadData()
         {
+        }
+
+        public override string SetTitle()
+        {
+            return "Main Window";
         }
 
         private string _alertMessage;

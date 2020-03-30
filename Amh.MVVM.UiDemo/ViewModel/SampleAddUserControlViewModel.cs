@@ -15,8 +15,10 @@ namespace Amh.MVVM.UiDemo.ViewModel
     {
         public SampleAddUserControlViewModel()
         {
-            Title = "Add Weather";
+        }
 
+        public override void LoadCommands()
+        {
             SaveCommand = new RelayCommand(OnSave);
             CloseCommand = new RelayCommand(OnClose);
         }
@@ -41,6 +43,11 @@ namespace Amh.MVVM.UiDemo.ViewModel
             Cities = new ObservableCollection<Tuple<int, string>>();
             foreach (var item in cities)
                 Cities.Add(new Tuple<int, string>(item.Id, item.Name));
+        }
+
+        public override string SetTitle()
+        {
+            return "Add Weather";
         }
 
         private ObservableCollection<Tuple<int, string>> _cities;

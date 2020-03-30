@@ -73,6 +73,7 @@
     <Compile Include="MyViewLocator.cs" />
     <Compile Include="ViewModel\SampleAddUserControlViewModel.cs" />
     <Compile Include="ViewModel\SampleDetailUserControlViewModel.cs" />
+    <Compile Include="ViewModel\SampleEditUserControlViewModel.cs" />
     <Compile Include="ViewModel\SampleListUserControlViewModel.cs" />
     <Compile Include="View\SampleAddUserControlView.xaml.cs">
       <DependentUpon>SampleAddUserControlView.xaml</DependentUpon>

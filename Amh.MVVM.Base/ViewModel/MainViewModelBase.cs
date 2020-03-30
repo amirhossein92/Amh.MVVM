@@ -8,7 +8,6 @@ namespace Amh.MVVM.Base.ViewModel
 {
     public abstract class MainViewModelBase : ViewModelBase
     {
-
         private ViewModelBase _currentUserViewModel;
         public ViewModelBase CurrentUserViewModel
         {

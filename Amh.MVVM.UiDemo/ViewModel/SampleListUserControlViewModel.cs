@@ -16,10 +16,6 @@ namespace Amh.MVVM.UiDemo.ViewModel
     {
         public SampleListUserControlViewModel()
         {
-            AddCommand = new RelayCommand(OnAdd);
-            ShowCommand = new RelayCommand(OnShow);
-            DetailCommand = new RelayCommand<Weather>(OnDetail);
-
             MessagingService<AlertModel>.Subscribe(OnMsgSent);
         }
 
@@ -28,14 +24,17 @@ namespace Amh.MVVM.UiDemo.ViewModel
             var a = 2;
         }
 
-        public override async void LoadData()
+        public override void LoadCommands()
         {
-            if (Weathers == null)
-            {
-                await Task.Delay(2500);
-                OnShow();
-            }
+            AddCommand = new RelayCommand(OnAdd);
+            ShowCommand = new RelayCommand(OnShow);
+            DetailCommand = new RelayCommand<Weather>(OnDetail);
         }
+
+        public RelayCommand AddCommand { get; set; }
+        public RelayCommand ShowCommand { get; set; }
+        public RelayCommand<Weather> DetailCommand { get; set; }
+        public RelayCommand DetailsCommand { get; set; }
 
         private void OnAdd()
         {
@@ -56,10 +55,19 @@ namespace Amh.MVVM.UiDemo.ViewModel
             WindowService.OpenNewPageWithConstructor<SampleDetailUserControlViewModel, Weather>(this, weather);
         }
 
-        public RelayCommand AddCommand { get; set; }
-        public RelayCommand ShowCommand { get; set; }
-        public RelayCommand<Weather> DetailCommand { get; set; }
-        public RelayCommand DetailsCommand { get; set; }
+        public override async void LoadData()
+        {
+            if (Weathers == null)
+            {
+                await Task.Delay(2500);
+                OnShow();
+            }
+        }
+
+        public override string SetTitle()
+        {
+            return "List";
+        }
 
         private ObservableCollection<Weather> _weathers;
         public ObservableCollection<Weather> Weathers
