@@ -61,6 +61,8 @@ namespace Amh.MVVM.Utility
                 window.Close();
         }
 
+        #region private methods
+
         private static T CreateInstance<T>(T viewModel) where T : ViewModelBase
         {
             if (viewModel == null)
@@ -83,10 +85,10 @@ namespace Amh.MVVM.Utility
 
         private static MyDialogWindow CreateDialogWindow()
         {
-            var resources = Application.Current.MainWindow.Resources;
+            //var resources = Application.Current.MainWindow.Resources;
             var newWindow = new MyDialogWindow();
             newWindow.SizeToContent = SizeToContent.WidthAndHeight;
-            newWindow.Resources = resources;
+            //newWindow.Resources = resources;
 
             return newWindow;
         }
@@ -96,5 +98,8 @@ namespace Amh.MVVM.Utility
             newWindow.Title = viewModel.Title;
             newWindow.Content = viewModel;
         }
+
+        #endregion private methods
+
     }
 }

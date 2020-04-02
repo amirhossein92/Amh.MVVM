@@ -14,19 +14,20 @@ namespace Amh.MVVM.UiDemo
 {
     public static class MyViewLocator
     {
-        private static IEnumerable<(object Key, object Value)> GetDataTemplates()
+        private static IEnumerable<KeyValuePair<object, object>> GetDataTemplates()
         {
-            var results = new List<(object Key, object Value)>();
+            var results = new List<KeyValuePair<object, object>>();
 
             results.Add(MyViewLocatorUtility.BindViewModelToView<SampleAddUserControlViewModel, SampleAddUserControlView>());
             results.Add(MyViewLocatorUtility.BindViewModelToView<SampleDetailUserControlViewModel, SampleDetailUserControlView>());
             results.Add(MyViewLocatorUtility.BindViewModelToView<SampleListUserControlViewModel, SampleListUserControlView>());
+            results.Add(MyViewLocatorUtility.BindViewModelToView<SampleTabUserControlViewModel, SampleTabUserControlView>());
 
             return results;
         }
 
-        private static IEnumerable<(object Key, object Value)> _dataTemplates;
-        public static IEnumerable<(object Key, object Value)> DataTemplates
+        private static IEnumerable<KeyValuePair<object, object>> _dataTemplates;
+        public static IEnumerable<KeyValuePair<object, object>> DataTemplates
         {
             get
             {

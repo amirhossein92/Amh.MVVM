@@ -13,10 +13,13 @@ namespace Amh.MVVM.UiDemo
 {
     public class MainWindowViewModel : MainViewModelBase
     {
+        private MyWindowTabService _tabWindowService = new MyWindowTabService();
+
         public MainWindowViewModel()
         {
+            _tabWindowService.SetMainWindowViewModel(this);
             WindowService.SetMainWindowViewModel(this);
-            CurrentUserViewModel = new SampleListUserControlViewModel();
+            CurrentUserViewModel = new SampleTabUserControlViewModel();
             MessagingService<AlertModel>.Subscribe(OnMsgSent);
         }
 

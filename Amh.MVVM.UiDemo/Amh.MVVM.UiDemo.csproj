@@ -75,6 +75,7 @@
     <Compile Include="ViewModel\SampleDetailUserControlViewModel.cs" />
     <Compile Include="ViewModel\SampleEditUserControlViewModel.cs" />
     <Compile Include="ViewModel\SampleListUserControlViewModel.cs" />
+    <Compile Include="ViewModel\SampleTabUserControlViewModel.cs" />
     <Compile Include="View\SampleAddUserControlView.xaml.cs">
       <DependentUpon>SampleAddUserControlView.xaml</DependentUpon>
     </Compile>
@@ -83,6 +84,9 @@
     </Compile>
     <Compile Include="View\SampleListUserControlView.xaml.cs">
       <DependentUpon>SampleListUserControlView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SampleTabUserControlView.xaml.cs">
+      <DependentUpon>SampleTabUserControlView.xaml</DependentUpon>
     </Compile>
     <Page Include="Controls\Alert\MyAlert.xaml">
       <SubType>Designer</SubType>
@@ -109,6 +113,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\SampleListUserControlView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SampleTabUserControlView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -11,14 +11,14 @@ namespace Amh.MVVM.Utility
 {
     public class MyViewLocatorUtility
     {
-        public static (object Key, object Value) BindViewModelToView<TViewModel, TView>() where TViewModel : ViewModelBase where TView : UserControlBase
+        public static KeyValuePair<object, object> BindViewModelToView<TViewModel, TView>() where TViewModel : ViewModelBase where TView : UserControlBase
         {
             DataTemplate dataTemplate = new DataTemplate
             {
                 VisualTree = new FrameworkElementFactory(typeof(TView))
             };
             var dtk = new DataTemplateKey(typeof(TViewModel));
-            return (dtk, dataTemplate);
+            return new KeyValuePair<object, object>(dtk, dataTemplate);
         }
     }
 }

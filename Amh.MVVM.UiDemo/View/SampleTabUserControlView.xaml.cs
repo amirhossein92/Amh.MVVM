@@ -1,7 +1,4 @@
 ﻿using Amh.MVVM.Base.View;
-using Amh.MVVM.Base.ViewModel;
-using Amh.MVVM.UiDemo.View;
-using Amh.MVVM.UiDemo.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,14 +14,11 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Amh.MVVM.UiDemo
+namespace Amh.MVVM.UiDemo.View
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
+    public partial class SampleTabUserControlView : UserControlBase
     {
-        public MainWindow()
+        public SampleTabUserControlView()
         {
             InitializeComponent();
         }

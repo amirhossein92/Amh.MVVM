@@ -13,5 +13,11 @@ namespace Amh.MVVM.UiDemo
     /// </summary>
     public partial class App : Application
     {
+        public App()
+        {
+            var resources = MyViewLocator.DataTemplates;
+            foreach (var resource in resources)
+                this.Resources.Add(resource.Key, resource.Value);
+        }
     }
 }

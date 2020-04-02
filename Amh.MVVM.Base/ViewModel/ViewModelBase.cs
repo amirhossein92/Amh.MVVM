@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Amh.MVVM.Base.Command;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Amh.MVVM.Base.ViewModel
 {
-    public abstract class ViewModelBase : INotifyPropertyChanged
+    public abstract class ViewModelBase : BindableBase, INotifyPropertyChanged
     {
         public ViewModelBase()
         {
@@ -28,13 +29,6 @@ namespace Amh.MVVM.Base.ViewModel
                 _title = value;
                 OnPropertyChanged();
             }
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        public void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 
