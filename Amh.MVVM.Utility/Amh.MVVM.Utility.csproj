@@ -45,12 +45,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AmhListExtension.cs" />
+    <Compile Include="Creator\MyCreator.cs" />
     <Compile Include="IWindowDialogService.cs" />
     <Compile Include="IWindowService.cs" />
     <Compile Include="MessagingService.cs" />
     <Compile Include="MyViewLocatorUtility.cs" />
     <Compile Include="MyWindowTabService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WindowDialogService.cs" />
     <Compile Include="WindowService.cs" />
   </ItemGroup>
   <ItemGroup>

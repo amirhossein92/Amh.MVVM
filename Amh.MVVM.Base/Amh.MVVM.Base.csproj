@@ -53,11 +53,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\MainViewModelBase.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
+    <Compile Include="ViewModel\ViewModelCollection.cs" />
     <Compile Include="View\UserControlBase.cs" />
     <Compile Include="Window\MyDialogWindow.xaml.cs">
       <DependentUpon>MyDialogWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Window\MyWindow.cs" />
+    <Compile Include="Window\TabManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="Window\MyDialogWindow.xaml">

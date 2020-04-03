@@ -9,12 +9,7 @@ namespace Amh.MVVM.Base.ViewModel
 {
     public abstract class MainViewModelBase : ViewModelBase
     {
-        public MainViewModelBase()
-        {
-            CurrentUserViewModels = new ObservableCollection<ViewModelBase>();
-        }
-
-        private static ObservableCollection<ViewModelBase> _currentUserViewModels;
+        private static ObservableCollection<ViewModelBase> _currentUserViewModels = new ObservableCollection<ViewModelBase>();
         public ObservableCollection<ViewModelBase> CurrentUserViewModels
         {
             get => _currentUserViewModels;
@@ -25,24 +20,13 @@ namespace Amh.MVVM.Base.ViewModel
             }
         }
 
-        private ViewModelBase _currentUserViewModel;
-        public ViewModelBase CurrentUserViewModel
+        public static int _currentUserViewModelIndex;
+        public int CurrentUserViewModelIndex
         {
-            get => _currentUserViewModel;
+            get => _currentUserViewModelIndex;
             set
             {
-                _currentUserViewModel = value;
-                OnPropertyChanged();
-            }
-        }
-
-        private ViewModelBase _lastUserViewModel;
-        public ViewModelBase LastUserViewModel
-        {
-            get => _lastUserViewModel;
-            set
-            {
-                _lastUserViewModel = value;
+                _currentUserViewModelIndex = value;
                 OnPropertyChanged();
             }
         }

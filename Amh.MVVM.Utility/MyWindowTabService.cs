@@ -1,4 +1,5 @@
 ﻿using Amh.MVVM.Base.ViewModel;
+using Amh.MVVM.Utility.Creator;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,18 +25,37 @@ namespace Amh.MVVM.Utility
 
         public void OpenNewPage<T>(ViewModelBase currentViewModel, T viewModel = null) where T : ViewModelBase
         {
-            if (viewModel == null)
-                viewModel = Activator.CreateInstance<T>();
+            viewModel = MyCreator.ViewModelCreator<T>(viewModel);
 
-            _mainViewModel.CurrentUserViewModels.Add(viewModel);
+            if (_mainViewModel.CurrentUserViewModels.OfType<T>().Any())
+            {
+                var vm = _mainViewModel.CurrentUserViewModels.OfType<T>().First();
+                _mainViewModel.CurrentUserViewModelIndex = _mainViewModel.CurrentUserViewModels.IndexOf(vm);
+            }
+            else
+            {
+                _mainViewModel.CurrentUserViewModels.Add(viewModel);
+                var index = _mainViewModel.CurrentUserViewModels.IndexOf(viewModel);
+                _mainViewModel.CurrentUserViewModelIndex = index;
+            }
         }
 
         public void OpenNewPageWithConstructor<T, Tparameter>(ViewModelBase currentViewModel, Tparameter parameter, T viewModel = null) where T : ViewModelBase<Tparameter>
         {
-            if (viewModel == null)
-                viewModel = Activator.CreateInstance<T>();
+            viewModel = MyCreator.ViewModelCreator<T>(viewModel);
+            MyCreator.PassParemeterToViewModel(viewModel, parameter);
 
-            _mainViewModel.CurrentUserViewModels.Add(viewModel);
+            if (_mainViewModel.CurrentUserViewModels.OfType<T>().Any())
+            {
+                var vm = _mainViewModel.CurrentUserViewModels.OfType<T>().First();
+                _mainViewModel.CurrentUserViewModelIndex = _mainViewModel.CurrentUserViewModels.IndexOf(vm);
+            }
+            else
+            {
+                _mainViewModel.CurrentUserViewModels.Add(viewModel);
+                var index = _mainViewModel.CurrentUserViewModels.IndexOf(viewModel);
+                _mainViewModel.CurrentUserViewModelIndex = index;
+            }
         }
     }
 }

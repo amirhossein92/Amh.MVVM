@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Amh.MVVM.UiDemo"
         xmlns:view="clr-namespace:Amh.MVVM.UiDemo.View"
-        xmlns:viewModel="clr-namespace:Amh.MVVM.UiDemo.ViewModel"
-        xmlns:converters="clr-namespace:Amh.MVVM.UiDemo.Converters"
+        xmlns:converters="clr-namespace:Amh.MVVM.UiDemo.Converters" 
+        xmlns:viewBase="clr-namespace:Amh.MVVM.Base.View;assembly=Amh.MVVM.Base"
+        xmlns:viewmodel="clr-namespace:Amh.MVVM.Base.ViewModel;assembly=Amh.MVVM.Base"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Window.Resources>
@@ -19,6 +20,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="2*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Border Background="LightGray" Height="50"
@@ -26,6 +28,31 @@
             <Label Content="{Binding Path=AlertMessage,Mode=TwoWay}"/>
         </Border>
         <Button Content="BACK" Command="{Binding Path=BackCommand}" Grid.Row="1"/>
-        <ContentControl Content="{Binding Path=CurrentUserViewModel}" Grid.Row="2"/>
+        <ContentControl Content="{Binding Path=CurrentUserViewModel}" Grid.Row="3"/>
+        <StackPanel Grid.Row="3" >
+            <Label Content="SALAM"
+                   Style="{StaticResource LabelMouseOver}"/>
+            <Button Content="Test" Command="{Binding Path=OpenNewTabCommand}"/>
+            <Button Content="Test2" Command="{Binding Path=OpenAnotherTabCommand}"/>
+        </StackPanel>
+        <TabControl ItemsSource="{Binding Path=CurrentUserViewModels}" Grid.Row="2"
+                    SelectedIndex="{Binding Path=CurrentUserViewModelIndex}">
+            <TabControl.Resources>
+                <Style TargetType="TabItem">
+                    <Setter Property="HeaderTemplate">
+                        <Setter.Value>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Path=Title}" FontSize="14"/>
+                                    <Button Content="X" 
+                                            Command="{Binding RelativeSource={RelativeSource AncestorType=Window}, 
+                                        Path=DataContext.CloseTabCommand}" CommandParameter="{Binding}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </TabControl.Resources>
+        </TabControl>
     </Grid>
 </Window>

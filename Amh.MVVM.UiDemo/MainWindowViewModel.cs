@@ -5,6 +5,7 @@ using Amh.MVVM.UiDemo.ViewModel;
 using Amh.MVVM.Utility;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,9 +19,32 @@ namespace Amh.MVVM.UiDemo
         public MainWindowViewModel()
         {
             _tabWindowService.SetMainWindowViewModel(this);
-            WindowService.SetMainWindowViewModel(this);
-            CurrentUserViewModel = new SampleTabUserControlViewModel();
+            _tabWindowService.OpenNewPage<SampleListUserControlViewModel>(null);
+            //WindowService.SetMainWindowViewModel(this);
             MessagingService<AlertModel>.Subscribe(OnMsgSent);
+
+            CloseTabCommand = new RelayCommand<ViewModelBase>(OnCloseTab);
+            OpenNewTabCommand = new RelayCommand(OnOpenNewTab);
+            OpenAnotherTabCommand = new RelayCommand(OnOpenAnotherTab);
+        }
+
+        public RelayCommand<ViewModelBase> CloseTabCommand { get; set; }
+        public RelayCommand OpenNewTabCommand { get; set; }
+        public RelayCommand OpenAnotherTabCommand { get; set; }
+
+        private void OnOpenNewTab()
+        {
+            _tabWindowService.OpenNewPage<SampleListUserControlViewModel>(null);
+        }
+
+        private void OnOpenAnotherTab()
+        {
+            _tabWindowService.OpenNewPage<SampleDetailUserControlViewModel>(null);
+        }
+
+        private void OnCloseTab(ViewModelBase viewModel)
+        {
+            this.CurrentUserViewModels.Remove(viewModel);
         }
 
         private void OnMsgSent(AlertModel msg)
@@ -39,7 +63,7 @@ namespace Amh.MVVM.UiDemo
         private void OnBack()
         {
             //WindowService.OpenNewPage<SampleListUserControlViewModel>();
-            WindowService.OpenNewPage(CurrentUserViewModel, LastUserViewModel);
+            //WindowService.OpenNewPage(CurrentUserViewModel, LastUserViewModel);
         }
 
         public override void LoadData()

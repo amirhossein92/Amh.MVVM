@@ -13,6 +13,9 @@ namespace Amh.MVVM.UiDemo.ViewModel
 {
     public class SampleAddUserControlViewModel : ViewModelBase<Weather>
     {
+        private IWindowDialogService _windowDialogService = new WindowDialogService();
+        private MyWindowTabService _myWindowTabService = new MyWindowTabService();
+
         public SampleAddUserControlViewModel()
         {
         }
@@ -28,13 +31,14 @@ namespace Amh.MVVM.UiDemo.ViewModel
 
         private void OnSave()
         {
-            WindowService.CloseDialogPage(this);
+            _windowDialogService.CloseDialogPage(this);
             MessagingService<AlertModel>.Sent(new AlertModel { Message = "Saved" });
         }
 
         private void OnClose()
         {
-            WindowService.CloseDialogPage(this);
+            _windowDialogService.CloseDialogPage(this);
+            _myWindowTabService.ClosePage(this);
         }
 
         public override void LoadData()

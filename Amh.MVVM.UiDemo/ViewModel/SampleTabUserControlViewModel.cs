@@ -16,9 +16,9 @@ namespace Amh.MVVM.UiDemo.ViewModel
 
         public SampleTabUserControlViewModel()
         {
-            CurrentUserViewModels = new ObservableCollection<ViewModelBase>();
-            CurrentUserViewModels.Add(new SampleListUserControlViewModel());
-            CurrentUserViewModels.Add(new SampleAddUserControlViewModel());
+            //CurrentUserViewModels = new ObservableCollection<ViewModelBase>();
+            //CurrentUserViewModels.Add(new SampleListUserControlViewModel());
+            //CurrentUserViewModels.Add(new SampleAddUserControlViewModel());
 
             CloseTabCommand = new RelayCommand<ViewModelBase>(OnCloseTab);
             OpenNewTabCommand = new RelayCommand(OnOpenNewTab);
@@ -37,7 +37,7 @@ namespace Amh.MVVM.UiDemo.ViewModel
 
         private void OnCloseTab(ViewModelBase viewModel)
         {
-            this.CurrentUserViewModels.Remove(viewModel);
+            //this.CurrentUserViewModels.Remove(viewModel);
         }
 
         public RelayCommand<ViewModelBase> CloseTabCommand { get; set; }

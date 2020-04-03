@@ -21,7 +21,7 @@ namespace Amh.MVVM.UiDemo
             results.Add(MyViewLocatorUtility.BindViewModelToView<SampleAddUserControlViewModel, SampleAddUserControlView>());
             results.Add(MyViewLocatorUtility.BindViewModelToView<SampleDetailUserControlViewModel, SampleDetailUserControlView>());
             results.Add(MyViewLocatorUtility.BindViewModelToView<SampleListUserControlViewModel, SampleListUserControlView>());
-            results.Add(MyViewLocatorUtility.BindViewModelToView<SampleTabUserControlViewModel, SampleTabUserControlView>());
+            //results.Add(MyViewLocatorUtility.BindViewModelToView<SampleTabUserControlViewModel, SampleTabUserControlView>());
 
             return results;
         }

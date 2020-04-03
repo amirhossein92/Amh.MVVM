@@ -14,6 +14,9 @@ namespace Amh.MVVM.UiDemo.ViewModel
 {
     public class SampleListUserControlViewModel : ViewModelBase
     {
+        private MyWindowTabService _myWindowTabService = new MyWindowTabService();
+        private IWindowDialogService _windowDialogService = new WindowDialogService();
+
         public SampleListUserControlViewModel()
         {
             MessagingService<AlertModel>.Subscribe(OnMsgSent);
@@ -40,7 +43,8 @@ namespace Amh.MVVM.UiDemo.ViewModel
         {
             // New Dialog Page
             var weather = new Weather();
-            WindowService.OpenNewPageDialogWithConstructor<SampleAddUserControlViewModel, Weather>(this, weather);
+            //WindowService.OpenNewPageDialogWithConstructor<SampleAddUserControlViewModel, Weather>(this, weather);
+            _windowDialogService.OpenNewPageDialogWithConstructor<SampleAddUserControlViewModel, Weather>(this, weather);
         }
 
         private void OnShow()
@@ -52,7 +56,8 @@ namespace Amh.MVVM.UiDemo.ViewModel
         {
             // Open New Page and have back button
             //WindowService.OpenNewPage<SampleDetailUserControlViewModel>();
-            WindowService.OpenNewPageWithConstructor<SampleDetailUserControlViewModel, Weather>(this, weather);
+            //WindowService.OpenNewPageWithConstructor<SampleDetailUserControlViewModel, Weather>(this, weather);
+            _myWindowTabService.OpenNewPageWithConstructor<SampleDetailUserControlViewModel, Weather>(this, weather);
         }
 
         public override async void LoadData()
