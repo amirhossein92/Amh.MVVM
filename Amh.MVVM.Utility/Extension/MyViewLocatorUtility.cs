@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace Amh.MVVM.Utility
+namespace Amh.MVVM.Utility.Extension
 {
     public class MyViewLocatorUtility
     {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Amh.MVVM.Base.Command;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -9,6 +10,11 @@ namespace Amh.MVVM.Base.ViewModel
 {
     public abstract class MainViewModelBase : ViewModelBase
     {
+        public MainViewModelBase()
+        {
+            CloseTabCommand = new RelayCommand<ViewModelBase>(OnCloseTab);
+        }
+
         private static ObservableCollection<ViewModelBase> _currentUserViewModels = new ObservableCollection<ViewModelBase>();
         public ObservableCollection<ViewModelBase> CurrentUserViewModels
         {
@@ -29,6 +35,13 @@ namespace Amh.MVVM.Base.ViewModel
                 _currentUserViewModelIndex = value;
                 OnPropertyChanged();
             }
+        }
+
+        public RelayCommand<ViewModelBase> CloseTabCommand { get; set; }
+
+        private void OnCloseTab(ViewModelBase viewModel)
+        {
+            this.CurrentUserViewModels.Remove(viewModel);
         }
     }
 }

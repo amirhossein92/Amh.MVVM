@@ -23,12 +23,10 @@ namespace Amh.MVVM.UiDemo
             //WindowService.SetMainWindowViewModel(this);
             MessagingService<AlertModel>.Subscribe(OnMsgSent);
 
-            CloseTabCommand = new RelayCommand<ViewModelBase>(OnCloseTab);
             OpenNewTabCommand = new RelayCommand(OnOpenNewTab);
             OpenAnotherTabCommand = new RelayCommand(OnOpenAnotherTab);
         }
 
-        public RelayCommand<ViewModelBase> CloseTabCommand { get; set; }
         public RelayCommand OpenNewTabCommand { get; set; }
         public RelayCommand OpenAnotherTabCommand { get; set; }
 
@@ -40,11 +38,6 @@ namespace Amh.MVVM.UiDemo
         private void OnOpenAnotherTab()
         {
             _tabWindowService.OpenNewPage<SampleDetailUserControlViewModel>(null);
-        }
-
-        private void OnCloseTab(ViewModelBase viewModel)
-        {
-            this.CurrentUserViewModels.Remove(viewModel);
         }
 
         private void OnMsgSent(AlertModel msg)

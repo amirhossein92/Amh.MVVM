@@ -3,6 +3,7 @@ using Amh.MVVM.Base.ViewModel;
 using Amh.MVVM.UiDemo.View;
 using Amh.MVVM.UiDemo.ViewModel;
 using Amh.MVVM.Utility;
+using Amh.MVVM.Utility.Extension;
 using System;
 using System.Collections.Generic;
 using System.Linq;

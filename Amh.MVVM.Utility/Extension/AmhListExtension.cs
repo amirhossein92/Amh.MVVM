@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Amh.MVVM.Utility
+namespace Amh.MVVM.Utility.Extension
 {
     public static class AmhListExtension
     {

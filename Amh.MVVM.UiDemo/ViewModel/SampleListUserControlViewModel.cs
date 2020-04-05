@@ -9,6 +9,7 @@ using Amh.MVVM.Utility;
 using Amh.MVVM.Base.Command;
 using System.Windows.Interop;
 using Amh.MVVM.UiDemo.Model;
+using Amh.MVVM.Utility.Extension;
 
 namespace Amh.MVVM.UiDemo.ViewModel
 {
